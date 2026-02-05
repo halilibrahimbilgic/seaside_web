@@ -9,10 +9,6 @@ import { useTranslation } from "react-i18next";
  */
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const { events, loading, error } = useGoogleSheet();
   const { t, i18n } = useTranslation();
