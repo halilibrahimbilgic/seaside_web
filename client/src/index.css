@@ -1,0 +1,218 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --font-display: 'Emmylou Signature', serif;
+  --font-heading: 'Boiling', sans-serif;
+  --font-body: 'Boiling', sans-serif;
+  --primary: #d97b5c;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #d97b5c;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #d97b5c;
+  --chart-2: #c9694a;
+  --chart-3: #b5573a;
+  --chart-4: #a1452a;
+  --chart-5: #8d331a;
+  --radius: 0.65rem;
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #e0e0e0;
+  --muted: #404040;
+  --muted-foreground: #a0a0a0;
+  --accent: #d97b5c;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #2a2a2a;
+  --ring: #d97b5c;
+  --sidebar: #f5f1ed;
+  --sidebar-foreground: #000000;
+  --sidebar-accent: #d97b5c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e0dcd8;
+  --sidebar-ring: #d97b5c;
+}
+
+.dark {
+  --primary: #d97b5c;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #d97b5c;
+  --sidebar-primary-foreground: #ffffff;
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #e0e0e0;
+  --muted: #404040;
+  --muted-foreground: #a0a0a0;
+  --accent: #d97b5c;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #2a2a2a;
+  --ring: #d97b5c;
+  --chart-1: #d97b5c;
+  --chart-2: #c9694a;
+  --chart-3: #b5573a;
+  --chart-4: #a1452a;
+  --chart-5: #8d331a;
+  --sidebar: #f5f1ed;
+  --sidebar-foreground: #000000;
+  --sidebar-accent: #d97b5c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e0dcd8;
+  --sidebar-ring: #d97b5c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+  .so-beach-section-title {
+    font-family: var(--font-display);
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* So Beach Club Tasarımı Bileşenleri */
+  .so-beach-button {
+    @apply px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-all duration-300 transform hover:scale-105;
+  }
+
+  .so-beach-button-outline {
+    @apply px-6 py-3 border-2 border-accent text-accent font-semibold rounded-lg hover:bg-accent/10 transition-all duration-300;
+  }
+
+  .so-beach-section {
+    @apply py-16 md:py-24;
+  }
+
+  .so-beach-section-title {
+    @apply text-4xl md:text-5xl font-bold text-white mb-12 text-center;
+  }
+
+  .so-beach-card {
+    @apply bg-card rounded-lg p-6 hover:shadow-lg transition-shadow;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+  @apply bg-accent text-accent-foreground;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent rounded-full hover:bg-accent/80;
+}
