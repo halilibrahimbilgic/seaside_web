@@ -9,13 +9,14 @@ import Menu from "./pages/Menu";
 import Reservation from "./pages/Reservation";
 import { useState } from "react";
 import { X, Menu as MenuIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 /**
  * Seaside Beach - So Beach Tasarımı
  * Sade ve şık butonlar, SEASIDE BEACH yukarıda
  */
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -30,7 +31,13 @@ function Router() {
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [language, setLanguage] = useState<'tr' | 'eng'>('tr');
+  const { i18n } = useTranslation();
+  const language = i18n.language as 'tr' | 'en';
+
+  const handleLanguageChange = (lang: 'tr' | 'en') => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem('language', lang);
+  };
 
   const menuItems = [
     { label: "HAKKIMIZDA", href: "/#about" },
@@ -66,14 +73,14 @@ function App() {
 
                 {/* Center Logo - Hidden on Mobile */}
                 <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white tracking-widest whitespace-nowrap" style={{ fontFamily: "Emmylou Signature, serif", letterSpacing: "0.2em", fontWeight: "300" }}>
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white tracking-widest whitespace-nowrap" style={{ fontFamily: "Emmylou Signature, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif", letterSpacing: "0.2em", fontWeight: "400", WebkitFontSmoothing: "antialiased", textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)" }}>
                     SEASIDE BEACH
                   </h1>
                 </div>
                 
                 {/* Mobile Center Logo */}
                 <div className="sm:hidden absolute left-1/2 transform -translate-x-1/2">
-                  <h1 className="text-xl font-light text-white tracking-widest whitespace-nowrap" style={{ fontFamily: "Emmylou Signature, serif", letterSpacing: "0.2em", fontWeight: "300" }}>
+                  <h1 className="text-lg sm:text-xl font-semibold text-white tracking-widest whitespace-nowrap" style={{ fontFamily: "Emmylou Signature, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif", letterSpacing: "0.15em", fontWeight: "700", WebkitFontSmoothing: "antialiased", textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", paintOrder: "stroke fill" }}>
                     SEASIDE BEACH
                   </h1>
                 </div>
@@ -82,9 +89,9 @@ function App() {
                 <div className="flex items-center gap-3 sm:gap-4 ml-auto">
                   {/* Language Button */}
                   <button 
-                    onClick={() => setLanguage(language === 'tr' ? 'eng' : 'tr')}
+                    onClick={() => handleLanguageChange(language === 'tr' ? 'en' : 'tr')}
                     className="px-4 py-2 text-xs sm:text-sm font-light border border-white/40 rounded-none hover:border-white/70 transition text-white/70 hover:text-white cursor-pointer" 
-                    style={{ fontFamily: "Boiling, sans-serif" }}
+                    style={{ fontFamily: "Boiling, sans-serif", WebkitFontSmoothing: "antialiased" }}
                   >
                     {language === 'tr' ? 'TR' : 'ENG'}
                   </button>
@@ -126,7 +133,7 @@ function App() {
 
               {/* Logo */}
               <div className="mb-12 mt-4">
-                <h1 className="text-3xl font-bold text-[#d97b5c] tracking-wider" style={{ fontFamily: "Emmylou Signature" }}>
+                <h1 className="text-3xl font-bold text-[#d97b5c] tracking-wider" style={{ fontFamily: "Emmylou Signature, serif" }}>
                   SEASIDE
                 </h1>
               </div>

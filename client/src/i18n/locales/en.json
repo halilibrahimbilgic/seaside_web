@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "about": "About",
+    "experiences": "Experiences",
+    "events": "Events",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "marina": "Marina",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "SEASIDE BEACH"
+  },
+  "about": {
+    "title": "About",
+    "description": "Seaside Beach is a unique place located in the most beautiful cove of Bandırma, where peace and deliciousness meet by the sea. Inspired by the enchanting beauty of nature, it is a paradise where modern comfort and unique sea views meet."
+  },
+  "experiences": {
+    "title": "Experiences",
+    "beach": "Beach Experience",
+    "bar": "Bar & Music",
+    "gastronomy": "Gastronomy",
+    "camping": "Camping Area",
+    "memories": "Unforgettable memories"
+  },
+  "events": {
+    "title": "Events & Entertainment",
+    "loading": "Loading events...",
+    "error": "Events could not be loaded. Please try again later.",
+    "liveMusic": "🎶 Live Music",
+    "liveMusicDesc": "Live music performances on weekends",
+    "themeNight": "🎉 Theme Night",
+    "themeNightDesc": "Special themed and costume nights",
+    "cocktailHour": "🍾 Cocktail Hour",
+    "cocktailHourDesc": "Daily special cocktail promotions"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "reviews": {
+    "title": "Customer Reviews"
+  },
+  "marina": {
+    "title": "Marina",
+    "waterSports": "Water Sports",
+    "description": "Seaside Beach Marina offers jet ski, boat rental and other water sports activities. Our professional team serves with all safety precautions.",
+    "boatRental": "Boat Rental",
+    "jetSki": "Jet Ski Activities",
+    "guidance": "Professional Guidance"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "What are the opening hours?",
+    "a1": "Beach: 09:00 - 20:00 | Beach Restaurant: 09:00 - 21:00 | Cafe Bar: 09:00 - 24:00. All areas are open every day.",
+    "q2": "How to make a reservation?",
+    "a2": "Phone: +90 532 206 3531 | WhatsApp: From the reservation page | Email: seaside@seaside-camping.com. Advance reservations are recommended for weekends.",
+    "q3": "What are the prices?",
+    "a3": "Prices vary depending on the season and type of service. For detailed information, please contact us by phone or email.",
+    "q4": "Information about events?",
+    "a4": "Live music, themed nights and special cocktail hours are held on weekends. You can follow current events on our Instagram page.",
+    "q5": "What is available in the camping area?",
+    "a5": "Modern toilet and shower facilities, electrical connections, water supply, picnic tables and security personnel are available.",
+    "q6": "Are there water sports activities?",
+    "a6": "Yes! Marina offers jet ski, boat rental and other water sports activities under professional guidance."
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "address": "Yukarıyapıcı, Mustafa Kemal Atatürk Cad No:1\n10502 Erdek/Balıkesir",
+    "followInstagram": "Follow on Instagram",
+    "instagram": "Follow on Instagram"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}

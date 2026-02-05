@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Phone, Mail, MapPin, Instagram, ChevronRight, Star, Anchor, ChevronDown } from "lucide-react";
+import { useGoogleSheet } from "@/hooks/useGoogleSheet";
+import { useTranslation } from "react-i18next";
 
 /**
  * Seaside Beach - Ana Sayfa
@@ -7,7 +9,14 @@ import { Phone, Mail, MapPin, Instagram, ChevronRight, Star, Anchor, ChevronDown
  */
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const { events, loading, error } = useGoogleSheet();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language as 'tr' | 'en';
 
   // Schema Markup for Local Business
   useEffect(() => {
@@ -111,12 +120,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section - Mobile Optimized */}
-      <section className="relative w-full h-screen bg-cover bg-center bg-no-repeat overflow-hidden" style={{backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663331252774/todKCkZaMvNEJdCJ.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed'}}>
+      <section className="relative w-full h-screen bg-cover bg-center bg-no-repeat overflow-hidden" style={{backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663331252774/todKCkZaMvNEJdCJ.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: window.innerWidth > 768 ? 'fixed' : 'scroll', WebkitBackgroundSize: 'cover'}}>
 
         <div className="container relative h-full flex flex-col justify-center items-center text-center px-4 sm:px-6">
-
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 max-w-2xl drop-shadow-md px-4">
-          </p>
+          {/* Hero yazısı boş bırakıldı */}
         </div>
       </section>
 
@@ -125,9 +132,9 @@ export default function Home() {
         <div className="container px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="so-beach-section-title text-left text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">Hakkımızda</h2>
+              <h2 className="so-beach-section-title text-left text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('about.title')}</h2>
               <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-                Seaside Beach, Bandırma'nın en güzel koyunda yer alan, deniz kenarında huzur ve lezzeti bir araya getiren benzersiz bir mekan. Doğanın büyüleyici güzelliğinden ilham alarak tasarlanmış, modern konforun ve eşsiz deniz manzarasının buluştuğu bir cennet.
+                {t('about.description')}
               </p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg h-64 sm:h-80 md:h-96 w-full">
@@ -145,20 +152,20 @@ export default function Home() {
       {/* Experiences Section - Mobile Optimized */}
       <section id="experiences" className="so-beach-section bg-gradient-to-b from-black to-[#1a1a1a] border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">Deneyimler</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('experiences.title')}</h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
-              { title: "Plaj Deneyimi", icon: "🏖️" },
-              { title: "Bar & Müzik", icon: "🎵" },
-              { title: "Gastronomi", icon: "🍽️" },
-              { title: "Kamp Alanı", icon: "⛺" },
+              { title: t('experiences.beach'), icon: "🏖️" },
+              { title: t('experiences.bar'), icon: "🎵" },
+              { title: t('experiences.gastronomy'), icon: "🍽️" },
+              { title: t('experiences.camping'), icon: "⛺" },
             ].map((exp) => (
               <div key={exp.title} className="so-beach-card text-center hover:scale-105 transition-transform p-4 sm:p-6">
                 <div className="text-3xl sm:text-4xl mb-2 sm:mb-4">{exp.icon}</div>
                 <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-2 sm:mb-3">{exp.title}</h3>
                 <p className="text-gray-400 text-xs sm:text-sm">
-                  Unutulmaz anılar
+                  {t('experiences.memories')}
                 </p>
               </div>
             ))}
@@ -169,29 +176,53 @@ export default function Home() {
       {/* Events Section - Mobile Optimized */}
       <section id="events" className="so-beach-section bg-black border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">Etkinlik & Eğlence</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('events.title')}</h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <div className="so-beach-card p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-3 sm:mb-4">🎶 Canlı Müzik</h3>
-              <p className="text-sm sm:text-base text-gray-300">Hafta sonları canlı müzik performansları</p>
+          {loading && <p className="text-center text-gray-400">{t('events.loading')}</p>}
+          {error && <p className="text-center text-red-400">{t('events.error')}</p>}
+          
+          {events.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+              {events.map((event, idx) => (
+                <div key={idx} className="so-beach-card p-4 sm:p-6 overflow-hidden">
+                  {event.imageUrl && (
+                    <img 
+                      src={event.imageUrl} 
+                      alt={event.title}
+                      className="w-full h-40 object-cover rounded-lg mb-4 sm:mb-6"
+                    />
+                  )}
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-2 sm:mb-3">{event.title}</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 mb-2">{event.date} • {event.time}</p>
+                  <p className="text-sm sm:text-base text-gray-300">{event.description}</p>
+                </div>
+              ))}
             </div>
-            <div className="so-beach-card p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-3 sm:mb-4">🎉 Tema Gecesi</h3>
-              <p className="text-sm sm:text-base text-gray-300">Özel tema ve kostüm geceleri</p>
-            </div>
-            <div className="so-beach-card p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-3 sm:mb-4">🍾 Kokteyl Saati</h3>
-              <p className="text-sm sm:text-base text-gray-300">Günlük özel kokteyl promosyonları</p>
-            </div>
-          </div>
+          ) : (
+            !loading && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <div className="so-beach-card p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-3 sm:mb-4">🎶 Canlı Müzik</h3>
+                  <p className="text-sm sm:text-base text-gray-300">Hafta sonları canlı müzik performansları</p>
+                </div>
+                <div className="so-beach-card p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-3 sm:mb-4">🎉 Tema Gecesi</h3>
+                  <p className="text-sm sm:text-base text-gray-300">Özel tema ve kostüm geceleri</p>
+                </div>
+                <div className="so-beach-card p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-3 sm:mb-4">🍾 Kokteyl Saati</h3>
+                  <p className="text-sm sm:text-base text-gray-300">Günlük özel kokteyl promosyonları</p>
+                </div>
+              </div>
+            )
+          )}
         </div>
       </section>
 
       {/* Gallery Section - Mobile Optimized */}
       <section id="gallery" className="so-beach-section bg-gradient-to-b from-black to-[#1a1a1a] border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">Galeri</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('gallery.title')}</h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {galleryPhotos.map((photo, i) => (
@@ -211,7 +242,7 @@ export default function Home() {
       {/* Reviews Section - Mobile Optimized */}
       <section id="reviews" className="so-beach-section bg-black border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">Müşteri Yorumları</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('reviews.title')}</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {reviews.map((review, idx) => (
@@ -232,7 +263,7 @@ export default function Home() {
       {/* Marina Section - Mobile Optimized */}
       <section id="marina" className="so-beach-section bg-gradient-to-b from-black to-[#1a1a1a] border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">Marina</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('marina.title')}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <div>
@@ -270,7 +301,7 @@ export default function Home() {
       {/* FAQ Section - Mobile Optimized */}
       <section id="faq" className="so-beach-section bg-black border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container max-w-3xl px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">Sıkça Sorulan Sorular</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('faq.title')}</h2>
           
           <div className="space-y-2 sm:space-y-4">
             {faqItems.map((item, idx) => (
@@ -302,12 +333,12 @@ export default function Home() {
       {/* Contact Section - Mobile Optimized */}
       <section id="contact" className="so-beach-section bg-gradient-to-b from-black to-[#1a1a1a] border-b border-accent/20 py-8 sm:py-12 md:py-16">
         <div className="container px-4 sm:px-6">
-          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">İletişim</h2>
+          <h2 className="so-beach-section-title text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12" style={{ WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>{t('contact.title')}</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
             <div className="so-beach-card text-center p-4 sm:p-6">
               <Phone className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-accent mx-auto mb-3 sm:mb-4" />
-              <h3 className="font-semibold mb-2 text-sm sm:text-base">Telefon</h3>
+              <h3 className="font-semibold mb-2 text-sm sm:text-base">{t('contact.phone')}</h3>
               <a href="tel:+905322063531" className="text-accent hover:underline text-sm sm:text-base md:text-lg font-semibold">
                 0532 206 3531
               </a>
@@ -315,7 +346,7 @@ export default function Home() {
             
             <div className="so-beach-card text-center p-4 sm:p-6">
               <Mail className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-accent mx-auto mb-3 sm:mb-4" />
-              <h3 className="font-semibold mb-2 text-sm sm:text-base">Email</h3>
+              <h3 className="font-semibold mb-2 text-sm sm:text-base">{t('contact.email')}</h3>
               <a href="mailto:seaside@seaside-camping.com" className="text-accent hover:underline text-xs sm:text-sm md:text-base break-all">
                 seaside@seaside-camping.com
               </a>
@@ -323,7 +354,7 @@ export default function Home() {
             
             <div className="so-beach-card text-center p-4 sm:p-6">
               <MapPin className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-accent mx-auto mb-3 sm:mb-4" />
-              <h3 className="font-semibold mb-2 text-sm sm:text-base">Konum</h3>
+              <h3 className="font-semibold mb-2 text-sm sm:text-base">{t('contact.location')}</h3>
               <p className="text-gray-400 text-xs sm:text-sm">
                 Yukarıyapıcı, Mustafa Kemal Atatürk Cad No:1<br />
                 10502 Erdek/Balıkesir
@@ -339,7 +370,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 text-accent hover:text-white transition text-sm sm:text-base"
             >
               <Instagram size={20} />
-              Instagram'da Takip Et
+              {t('contact.instagram')}
             </a>
           </div>
         </div>
@@ -347,7 +378,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-black border-t border-accent/20 py-6 sm:py-8 text-center text-xs sm:text-sm text-gray-500">
-        <p>&copy; 2025 Seaside Beach. Tüm hakları saklıdır.</p>
+        <p>&copy; 2025 Seaside Beach. {t('footer.copyright')}</p>
       </footer>
     </div>
   );

@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "about": "Hakkımızda",
+    "experiences": "Deneyimler",
+    "events": "Etkinlikler",
+    "gallery": "Galeri",
+    "reviews": "Yorumlar",
+    "marina": "Marina",
+    "faq": "SSS",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "SEASIDE BEACH"
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "description": "Seaside Beach, Bandırma'nın en güzel koyunda yer alan, deniz kenarında huzur ve lezzeti bir araya getiren benzersiz bir mekan. Doğanın büyüleyici güzelliğinden ilham alarak tasarlanmış, modern konforun ve eşsiz deniz manzarasının buluştuğu bir cennet."
+  },
+  "experiences": {
+    "title": "Deneyimler",
+    "beach": "Plaj Deneyimi",
+    "bar": "Bar & Müzik",
+    "gastronomy": "Gastronomi",
+    "camping": "Kamp Alanı",
+    "memories": "Unutulmaz anılar"
+  },
+  "events": {
+    "title": "Etkinlik & Eğlence",
+    "loading": "Etkinlikler yükleniyor...",
+    "error": "Etkinlikler yüklenemedi. Lütfen daha sonra deneyin.",
+    "liveMusic": "🎶 Canlı Müzik",
+    "liveMusicDesc": "Hafta sonları canlı müzik performansları",
+    "themeNight": "🎉 Tema Gecesi",
+    "themeNightDesc": "Özel tema ve kostüm geceleri",
+    "cocktailHour": "🍾 Kokteyl Saati",
+    "cocktailHourDesc": "Günlük özel kokteyl promosyonları"
+  },
+  "gallery": {
+    "title": "Galeri"
+  },
+  "reviews": {
+    "title": "Müşteri Yorumları"
+  },
+  "marina": {
+    "title": "Marina",
+    "waterSports": "Deniz Sporları",
+    "description": "Seaside Beach Marina'da jet ski, tekne kiralama ve diğer deniz sporları aktiviteleri mevcuttur. Profesyonel ekibimiz tüm güvenlik önlemleriyle hizmet vermektedir.",
+    "boatRental": "Tekne Kiralama",
+    "jetSki": "Jet Ski Aktiviteleri",
+    "guidance": "Profesyonel Rehberlik"
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "q1": "Açılış saatleri nedir?",
+    "a1": "Beach: 09:00 - 20:00 | Beach Restaurant: 09:00 - 21:00 | Cafe Bar: 09:00 - 24:00. Tüm alanlar her gün açıktır.",
+    "q2": "Rezervasyon nasıl yapılır?",
+    "a2": "Telefon: 0532 206 3531 | WhatsApp: Rezervasyon sayfasından | Email: seaside@seaside-camping.com. Hafta sonları önceden rezervasyon önerilir.",
+    "q3": "Ücretler nedir?",
+    "a3": "Fiyatlar mevsime ve hizmet türüne göre değişir. Detaylı bilgi için lütfen bize telefon veya email yoluyla ulaşın.",
+    "q4": "Etkinlikler hakkında bilgi?",
+    "a4": "Hafta sonları canlı müzik, tema geceleri ve özel kokteyl saatleri düzenlenır. Instagram sayfamızdan güncel etkinlikleri takip edebilirsiniz.",
+    "q5": "Kamp alanında neler vardır?",
+    "a5": "Modern tuvalet ve duş tesisleri, elektrik bağlantıları, su tesisatı, piknik masaları ve güvenlik görevlileri mevcuttur.",
+    "q6": "Deniz sporları aktiviteleri var mı?",
+    "a6": "Evet! Marina'da jet ski, tekne kiralama ve diğer deniz sporları aktiviteleri profesyonel rehberlik altında sunulmaktadır."
+  },
+  "contact": {
+    "title": "İletişim",
+    "phone": "Telefon",
+    "email": "Email",
+    "location": "Konum",
+    "address": "Yukarıyapıcı, Mustafa Kemal Atatürk Cad No:1\n10502 Erdek/Balıkesir",
+    "followInstagram": "Instagram'da Takip Et",
+    "instagram": "Instagram'da Takip Et"
+  },
+  "footer": {
+    "copyright": "Tüm hakları saklıdır."
+  }
+}
